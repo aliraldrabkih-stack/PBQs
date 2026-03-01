@@ -16,7 +16,6 @@
   --card-dark:#0f0f12;
 }
 
-/* Default = Light */ 
 body{
   margin:0;
   font-family:"Inter",sans-serif;
@@ -30,7 +29,6 @@ body{
   transition:.35s;
 }
 
-/* Theme Toggle Button */
 .theme-toggle{
   position:fixed;
   top:18px;
@@ -44,7 +42,6 @@ body{
   transition:.3s;
 }
 
-/* Flashcard */
 .card{
   width:85vw;
   max-width:950px;
@@ -84,17 +81,14 @@ body{
   text-align:center;
   font-size: clamp(18px,2.3vw,28px);
   line-height:1.4;
-  transition:.25s;
 }
 
 .front{ transform:rotateY(0deg); }
 .back{ transform:rotateY(180deg); color:var(--accent); font-weight:bold; }
 
-/* FIX: hide inactive face */
 .card:not(.flipped) .back{ opacity:0; pointer-events:none; }
 .card.flipped .front{ opacity:0; pointer-events:none; }
 
-/* Controls */
 .controls{
   margin-top:32px;
   display:flex;
@@ -130,9 +124,6 @@ body{
   text-align:center;
 }
 
-/* ======================
-   DARK THEME FIX
-   ====================== */
 body.dark{
   background:var(--bg-dark);
   color:var(--text-light);
@@ -146,14 +137,6 @@ body.dark .card{
 
 body.dark .back{
   color:var(--accent);
-}
-
-body.dark .ctrl-btn{
-  color:var(--accent);
-}
-
-body.dark .ctrl-btn:hover{
-  background:rgba(255,123,0,0.25);
 }
 </style>
 </head>
@@ -178,27 +161,19 @@ body.dark .ctrl-btn:hover{
 </div>
 
 <script>
-/* ------- Flashcards Content Here (Bank Example) -------- */
 const flashcards = [
 { q:"What is data classification?", a:"A system for identifying how sensitive data is and how it should be protected." },
-
 { q:"What is data sovereignty?", a:"Legal restrictions requiring data to remain within specific geographic locations." },
-
 { q:"What is privacy data?", a:"Personal information tied to an individual's identity, finances, or behavior." },
-
 { q:"What is the 'right to be forgotten'?", a:"A GDPR rule allowing individuals to request deletion of personal data." },
-
 { q:"Who is the data controller?", a:"The entity that determines how and why personal data is processed." },
-
 { q:"What is DLP?", a:"Data Loss Prevention — controls preventing unauthorized access or transfer of data." },
-
 { q:"What is an Acceptable Use Policy (AUP)?", a:"A policy defining how organizational systems and resources may be used." },
-
 { q:"What is security awareness training?", a:"Training to reduce human cyber risk through education and simulated threats." },
-
 { q:"What is gamification in training?", a:"Using interactive challenges to improve engagement and retention." },
-
 { q:"What is a compliance audit?", a:"A review confirming whether security standards and legal requirements are met." }
+];
+
 let index=0, flipped=false;
 
 function updateCard(){
@@ -211,13 +186,24 @@ function updateCard(){
   flipped=false;
 }
 
-function flipCard(){ flipped=!flipped; card.classList.toggle("flipped",flipped); }
+function flipCard(){ 
+  flipped=!flipped; 
+  card.classList.toggle("flipped",flipped); 
+}
 
-function nextCard(){ if(index<flashcards.length-1) index++; updateCard(); }
+function nextCard(){ 
+  if(index<flashcards.length-1) index++; 
+  updateCard(); 
+}
 
-function prevCard(){ if(index>0) index--; updateCard(); }
+function prevCard(){ 
+  if(index>0) index--; 
+  updateCard(); 
+}
 
-function toggleTheme(){ document.body.classList.toggle("dark"); }
+function toggleTheme(){ 
+  document.body.classList.toggle("dark"); 
+}
 
 updateCard();
 </script>
